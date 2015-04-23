@@ -97,7 +97,7 @@
 }
 
 // this is called whenever a URL we have requested with a background session returns and we are in the background
-// it is essentially waking us up to handle it
+// it is essentially waking us up to handle itcf
 // if we were in the foreground iOS would just call our delegate method and not bother with this
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
@@ -159,7 +159,8 @@
         // let's see if we're already working on a fetch ...
         if (![downloadTasks count]) {
             // ... not working on a fetch, let's start one up
-            NSURLSessionDownloadTask *task = [self.flickrDownloadSession downloadTaskWithURL:[FlickrFetcher URLforRecentGeoreferencedPhotos]];
+            NSURL *url = [FlickrFetcher URLforRecentGeoreferencedPhotos];
+            NSURLSessionDownloadTask *task = [self.flickrDownloadSession downloadTaskWithURL:url];
             task.taskDescription = FLICKR_FETCH;
             [task resume];
         } else {
