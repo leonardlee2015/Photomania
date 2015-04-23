@@ -38,6 +38,10 @@
 // this is called as soon as our storyboard is read in and we're ready to get started
 // but it's still very early in the game (UI is not yet on screen, for example)
 
+-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    NSLog(@"willFinishLaunchingWithOptions");
+    return YES;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // when we're in the background, fetch as often as possible (which won't be much)
@@ -47,6 +51,7 @@
     // we get our managed object context by creating it ourself in a category on PhotomaniaAppDelegate
     // but in your homework assignment, you must get your context from a UIManagedDocument
     // (i.e. you cannot use the method createMainQueueManagedObjectContext, or even use that approach)
+    NSLog(@"didFinishLaunchingWithOptions");
     self.photoDatabaseContext = [self createMainQueueManagedObjectContext];
     
     // we fire off a Flickr fetch every time we launch (why not?)

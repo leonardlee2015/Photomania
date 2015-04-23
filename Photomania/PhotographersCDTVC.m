@@ -14,6 +14,7 @@
 
 - (void)awakeFromNib
 {
+    NSLog(@"awakeFromNib");
     [[NSNotificationCenter defaultCenter] addObserverForName:PhotoDatabaseAvailabilityNotification
                                                       object:nil
                                                        queue:nil
@@ -50,6 +51,10 @@
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d photos", (int)[photographer.photos count]];
     
     return cell;
+}
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    NSLog(@"viewDidLoad");
 }
 
 @end
